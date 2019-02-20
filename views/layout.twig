@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {% block body %}{% endblock %}
-  </body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+{#HEADER#}
+<header class="container-fluid">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="row">
+                  <div class="col-lg-3">LOGO</div>
+                  <div class="col-lg-4"></div>
+                  <div class="col-lg-5 text-right">
+                      <nav class="d-flex-reverse align-item-center">
+                          <a href="" class="btn active">Главная</a>
+                          <a href="" class="btn">Автомобили</a>
+                          <a href="" class="btn">Мои поездки</a>
+                          <a href="" class="btn">Войти</a>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+</header>
+{#CONTENT#}
+<div class="container content">
+    <div class="row">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</div>
+{#FOOTER#}
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"></div>
+    </div>
+</footer>
+</body>
 </html>

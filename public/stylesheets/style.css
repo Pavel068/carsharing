@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+}
+html body {
+  display: flex;
+  flex-direction: column;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+html body header {
+  min-height: 80px;
+  background-color: #00222c;
+}
+html body header nav {
+  margin-top: 20px;
+}
+html body header nav a.btn {
+  background-color: #fff;
+  color: #00222c;
+}
+html body header nav a.active:hover {
+  text-decoration: none;
+}
+html body header nav a.active {
+  background-color: #2a1e5d;
+  color: #fff;
+}
+html body .content {
+  flex: 1 0 auto;
+}
+html body footer {
+  flex: 0 0 auto;
+  background-color: #00222c;
+  min-height: 80px;
+}
+
+/*# sourceMappingURL=style.css.map */
