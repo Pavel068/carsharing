@@ -8,6 +8,8 @@ html {
     html body header {
       min-height: 80px;
       background-color: #00222c; }
+      html body header p {
+        color: #fff; }
       html body header nav {
         margin-top: 20px; }
     html body .content {
@@ -16,5 +18,7 @@ html {
       flex: 0 0 auto;
       background-color: #00222c;
       min-height: 80px; }
+      html body footer p {
+        color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
