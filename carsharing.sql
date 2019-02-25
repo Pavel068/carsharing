@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 25 2019 г., 11:47
+-- Время создания: Фев 25 2019 г., 13:44
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -63,7 +63,8 @@ CREATE TABLE `trips` (
   `user` int(11) NOT NULL,
   `car` int(11) NOT NULL,
   `start_time` timestamp NOT NULL,
-  `end_time` timestamp NOT NULL
+  `end_time` timestamp NOT NULL,
+  `route` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
