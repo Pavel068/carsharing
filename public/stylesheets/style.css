@@ -29,10 +29,9 @@ html body header nav {
 }
 html body header nav a.btn {
   color: #ffffff;
-  background-color: #4aa943;
   margin-bottom: 5px;
 }
-html body header nav a.btn:hover {
+html body header nav a.btn:hover, html body header nav a.btn.active {
   background-color: #397b34;
 }
 html body .content {
