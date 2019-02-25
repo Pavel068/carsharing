@@ -15,4 +15,11 @@ router.get('/login', function(req, res, next) {
   });
 });
 
+/* GET register page. */
+router.get('/register', function(req, res, next) {
+  res.render('register', {
+    active: '/register'
+  });
+});
+
 module.exports = router;
