@@ -8,4 +8,12 @@ router.get('/', function(req, res, next) {
     });
 });
 
+/* GET trip details */
+router.get('/:tripId', function(req, res, next) {
+    res.render('trip-details', {
+        active: '/trips',
+        data: {},
+    });
+});
+
 module.exports = router;
