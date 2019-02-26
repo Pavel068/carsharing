@@ -26,24 +26,33 @@
 <header class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <a href="/" class="logo">
-                <img src="{{ base_path ~ directory }}/images/logo.png" class="logo" alt="">
-                <p class="lead">CarShare</p>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <nav>
-                        <a href="/" class="btn">Главная</a>
-                        <a href="/cars" class="btn">Автомобили</a>
-                        <a href="/trips" class="btn">Мои поездки</a>
-                        <a href="/login" class="btn">Войти</a>
-                    </nav>
+            <nav class="navbar navbar-dark light-blue lighten-4">
+                <a class="navbar-brand logo" href="/">
+                    <img src="{{ base_path ~ directory }}/images/logo.png" class="logo" alt="">
+                    <p class="lead">CarShare</p>
+                </a>
+                <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent1"
+                        aria-controls="navbarSupportedContent1" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="dark-blue-text"><i
+                                class="fas fa-bars fa-1x"></i></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item {% if active == '/' %} active {% endif %}">
+                            <a class="nav-link" href="/">Главная</a>
+                        </li>
+                        <li class="nav-item {% if active == '/cars' %} active {% endif %}">
+                            <a class="nav-link" href="/cars">Автомобили</a>
+                        </li>
+                        <li class="nav-item {% if active == '/trips' %} active {% endif %}">
+                            <a class="nav-link" href="/trips">Мои поездки</a>
+                        </li>
+                        <li class="nav-item {% if active == '/login' %} active {% endif %}">
+                            <a class="nav-link" href="/login">Авторизация</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
         </div>
     </div>
 </header>
