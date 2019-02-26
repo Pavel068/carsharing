@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 26 2019 г., 09:21
+-- Время создания: Фев 26 2019 г., 09:23
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -73,6 +73,14 @@ CREATE TABLE `places` (
   `lng` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `places`
+--
+
+INSERT INTO `places` (`car_id`, `lat`, `lng`) VALUES
+(1, 58.7757, 58.7757),
+(2, 44.4444, 66.6667);
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +135,7 @@ ALTER TABLE `crashes`
 -- Индексы таблицы `places`
 --
 ALTER TABLE `places`
-  ADD KEY `car_id` (`car_id`,`lat`,`lng`);
+  ADD PRIMARY KEY (`car_id`);
 
 --
 -- Индексы таблицы `trips`
