@@ -1,0 +1,81 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="col-lg-12">
+        <h1>Автомобиль</h1>
+        <div class="details">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{ base_path ~ directory }}/images/car-default.png" alt="" class="img-medium">
+                </div>
+                <div class="col-sm-8">
+                    <table class="table">
+                        <tr>
+                            <td>Марка</td>
+                            <td>Lada</td>
+                        </tr>
+                        <tr>
+                            <td>Модель</td>
+                            <td>Granta</td>
+                        </tr>
+                        <tr>
+                            <td>Гос. номер</td>
+                            <td>A277AA277</td>
+                        </tr>
+                        <tr>
+                            <td>Год выпуска</td>
+                            <td>2016</td>
+                        </tr>
+                        <tr>
+                            <td>КПП</td>
+                            <td>Механика</td>
+                        </tr>
+                        <tr>
+                            <td>Мощность</td>
+                            <td>106 л.с.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="lead">Информация об авариях автомобиля</p>
+                    <table class="table table-striped">
+                        <tr class="thead-dark">
+                            <th>Дата</th>
+                            <th>Причина</th>
+                        </tr>
+                        <tr>
+                            <td>26.02.2019</td>
+                            <td>Уснул за рулем</td>
+                        </tr>
+                        <tr>
+                            <td>26.02.2019</td>
+                            <td>Уснул за рулем</td>
+                        </tr>
+                        <tr>
+                            <td>26.02.2019</td>
+                            <td>Уснул за рулем</td>
+                        </tr>
+                        <tr>
+                            <td>26.02.2019</td>
+                            <td>Уснул за рулем</td>
+                        </tr>
+                        <tr>
+                            <td>26.02.2019</td>
+                            <td>Уснул за рулем</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="lead">Последние 10 поездок автомобиля</p>
+                    <div class="map" id="map">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
