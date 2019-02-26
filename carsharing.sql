@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 25 2019 г., 13:44
+-- Время создания: Фев 26 2019 г., 09:17
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -55,6 +55,18 @@ CREATE TABLE `crashes` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `places`
+--
+
+CREATE TABLE `places` (
+  `car_id` int(11) NOT NULL,
+  `lat` float NOT NULL,
+  `lng` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `trips`
 --
 
@@ -81,7 +93,8 @@ CREATE TABLE `users` (
   `surname` varchar(100) NOT NULL,
   `patr` varchar(100) NOT NULL,
   `birthday` date NOT NULL,
-  `avatar` varchar(32) NOT NULL
+  `avatar` varchar(32) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -100,6 +113,12 @@ ALTER TABLE `cars`
 ALTER TABLE `crashes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `trip_id` (`trip_id`);
+
+--
+-- Индексы таблицы `places`
+--
+ALTER TABLE `places`
+  ADD KEY `car_id` (`car_id`,`lat`,`lng`);
 
 --
 -- Индексы таблицы `trips`
@@ -152,6 +171,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `crashes`
   ADD CONSTRAINT `crashes_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trips` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `places`
+--
+ALTER TABLE `places`
+  ADD CONSTRAINT `places_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `trips`
