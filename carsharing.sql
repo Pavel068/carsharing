@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 26 2019 г., 09:17
+-- Время создания: Фев 26 2019 г., 09:21
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -36,8 +36,17 @@ CREATE TABLE `cars` (
   `color` varchar(32) NOT NULL,
   `transmission` enum('Механика','Автомат','Робот','Вариатор') NOT NULL,
   `power` int(11) NOT NULL,
+  `gos_number` varchar(9) NOT NULL,
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `cars`
+--
+
+INSERT INTO `cars` (`id`, `model`, `mark`, `year`, `color`, `transmission`, `power`, `gos_number`, `price`) VALUES
+(1, 'Granta', 'Lada', 2016, 'Белый', 'Механика', 106, 'A277AA277', 7.2),
+(2, 'Vesta', 'Lada', 2017, 'Черный', 'Механика', 110, 'X123AA277', 7.65);
 
 -- --------------------------------------------------------
 
@@ -142,7 +151,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `crashes`
