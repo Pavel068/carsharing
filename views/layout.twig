@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <title>CarShare - сервис каршеринга</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -17,7 +17,8 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=9ce751e1-6908-4f3f-b417-9e25f9ff4318&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=9ce751e1-6908-4f3f-b417-9e25f9ff4318&lang=ru_RU"
+            type="text/javascript"></script>
     <script src="{{ base_path ~ directory }}/javascripts/main.js"></script>
 </head>
 <body>
@@ -25,10 +26,10 @@
 <header class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <div class="logo">
+            <a href="/" class="logo">
                 <img src="{{ base_path ~ directory }}/images/logo.png" class="logo" alt="">
                 <p class="lead">CarShare</p>
-            </div>
+            </a>
         </div>
     </div>
     <div class="row">
