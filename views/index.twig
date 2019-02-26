@@ -2,7 +2,48 @@
 
 {% block content %}
     <div class="col-lg-12">
-        <h1>{{ title }}</h1>
-        <p>Welcome to {{ title }}</p>
+        <h1>Моя поездка</h1>
+        <div class="trip">
+            <div class="trip-inactive">
+                <p class="lead">
+                    <a href="/cars">Выберите автомобиль</a>
+                </p>
+            </div>
+            <div class="trip-active">
+                <form action="" class="text-center">
+                    <button class="btn btn-outline-success btn-control btn-control-start">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="btn btn-outline-primary btn-control btn-control-resume">
+                        <i class="fas fa-play"></i><i class="fas fa-play"></i>
+                    </button>
+                    <button class="btn btn-outline-warning btn-control btn-control-pause">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="btn btn-outline-danger btn-control btn-control-stop">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </form>
+
+                <table class="table">
+                    <tr>
+                        <td>Время в пути</td>
+                        <td>60 минут</td>
+                    </tr>
+                    <tr>
+                        <td>Километры</td>
+                        <td>14.1</td>
+                    </tr>
+                    <tr>
+                        <td>Стоимость</td>
+                        <td>₽200</td>
+                    </tr>
+                </table>
+
+                <div class="map route-active" id="map">
+
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
