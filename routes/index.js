@@ -30,6 +30,18 @@ router.get('/login', function (req, res, next) {
     });
 });
 
+/* Login user */
+router.post('/login', (req, res, next) => {
+    user.login(req.body.login, req.body.password)
+        .then((response) => {
+            console.log(user.info);
+            res.send(response);
+        })
+        .catch((error) => {
+            res.send(error);
+        })
+});
+
 /* GET register page. */
 router.get('/register', function (req, res, next) {
     res.render('register', {
@@ -45,7 +57,13 @@ router.get('/register', function (req, res, next) {
 
 /* Add user */
 router.post('/register', (req, res, next) => {
-    user.register(req.body);
+    user.register(req.body)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 });
 
 module.exports = router;
