@@ -20,6 +20,7 @@ router.get('/', function (req, res, next) {
 /* GET login page. */
 router.get('/login', function (req, res, next) {
     res.render('login', {
+        user: user,
         active: '/login',
         breadcrumbs: [
             {
@@ -34,8 +35,15 @@ router.get('/login', function (req, res, next) {
 router.post('/login', (req, res, next) => {
     user.login(req.body.login, req.body.password)
         .then((response) => {
-            console.log(user.info);
-            res.send(response);
+            if (Object.keys(user.info).length) {
+                res.cookie.user = user.info;
+                res.redirect('/');
+            } else {
+                user.info.error = {
+                    type: 'login'
+                };
+                res.redirect('/login');
+            }
         })
         .catch((error) => {
             res.send(error);

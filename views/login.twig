@@ -9,6 +9,9 @@
             <label for="password">Пароль</label>
             <input type="password" class="form-control" name="password" id="password">
             <button class="form-control btn btn-success">Войти</button>
+            {% if user.info.error != undefined %}
+                <p class="text-danger">Неверный логин и/или пароль</p>
+            {% endif %}
             <p style="margin-top: 5px">
                 Нет аккаунта? <a href="/register">Зарегистрируйтесь!</a>
             </p>
