@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 26 2019 г., 09:23
+-- Время создания: Фев 27 2019 г., 13:47
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -106,13 +106,20 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(32) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL,
-  `patr` varchar(100) NOT NULL,
-  `birthday` date NOT NULL,
-  `avatar` varchar(32) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `surname` varchar(100) DEFAULT NULL,
+  `patr` varchar(100) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `avatar` varchar(32) DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `patr`, `birthday`, `avatar`, `is_admin`) VALUES
+(1, 'admin', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Admin', '', '', '0000-00-00', '', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -177,7 +184,7 @@ ALTER TABLE `trips`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
