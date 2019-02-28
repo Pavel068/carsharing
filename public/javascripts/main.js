@@ -5,6 +5,14 @@ function init() {
     });
 }
 
+function getCarsList() {
+
+}
+
+function getCarInfo() {
+    
+}
+
 $(document).ready(() => {
     var socket = io();
 
