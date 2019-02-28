@@ -12,11 +12,13 @@ var redis = require("redis");
 var redisClient = redis.createClient();
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var tripsRouter = require('./routes/trips');
 var carsRouter = require('./routes/cars');
 
 var app = express();
+
+const db = new (require('./lib/db'))();
+user = new (require('./lib/user'))(db);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,7 +48,6 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
 app.use('/cars', carsRouter);
 

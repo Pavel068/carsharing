@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const db = new (require('../lib/db'))();
-var user = new (require('../lib/user'))(db);
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
     if (user.info.id === undefined) {

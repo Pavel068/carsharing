@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('trips', {
         active: '/trips',
+        user: user,
         breadcrumbs: [
             {
                 'label': 'Мои поездки',
@@ -18,6 +19,7 @@ router.get('/', function(req, res, next) {
 router.get('/:tripId', function(req, res, next) {
     res.render('trip-details', {
         active: '/trips',
+        user: user,
         breadcrumbs: [
             {
                 'label': 'Мои поездки',

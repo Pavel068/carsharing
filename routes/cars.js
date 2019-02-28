@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     res.render('cars', {
         active: '/cars',
+        user: user,
         breadcrumbs: [
             {
                 'label': 'Автомобили',
@@ -18,6 +19,7 @@ router.get('/', function (req, res, next) {
 router.get('/:carId', function (req, res, next) {
     res.render('car-details', {
         active: '/cars',
+        user: user,
         breadcrumbs: [
             {
                 'label': 'Автомобили',
