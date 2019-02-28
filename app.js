@@ -51,6 +51,13 @@ app.use('/', indexRouter);
 app.use('/trips', tripsRouter);
 app.use('/cars', carsRouter);
 
+app.use((req, res, next) => {
+    res.locals({
+        yandexApiKey: process.env.YANDEX_API_KEY
+    });
+    next();
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
