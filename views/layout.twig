@@ -38,18 +38,24 @@
                                 class="fas fa-bars fa-1x"></i></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {% if active == '/' %} active {% endif %}">
-                            <a class="nav-link" href="/">Главная</a>
-                        </li>
-                        <li class="nav-item {% if active == '/cars' %} active {% endif %}">
-                            <a class="nav-link" href="/cars">Автомобили</a>
-                        </li>
-                        <li class="nav-item {% if active == '/trips' %} active {% endif %}">
-                            <a class="nav-link" href="/trips">Мои поездки</a>
-                        </li>
-                        <li class="nav-item {% if active == '/login' %} active {% endif %}">
-                            <a class="nav-link" href="/login">Авторизация</a>
-                        </li>
+                        {% if user.info.id == null %}
+                            <li class="nav-item {% if active == '/login' %} active {% endif %}">
+                                <a class="nav-link" href="/login">Авторизация</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item {% if active == '/' %} active {% endif %}">
+                                <a class="nav-link" href="/">Главная</a>
+                            </li>
+                            <li class="nav-item {% if active == '/cars' %} active {% endif %}">
+                                <a class="nav-link" href="/cars">Автомобили</a>
+                            </li>
+                            <li class="nav-item {% if active == '/trips' %} active {% endif %}">
+                                <a class="nav-link" href="/trips">Мои поездки</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Выход</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

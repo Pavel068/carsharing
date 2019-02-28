@@ -2,19 +2,24 @@ const express = require('express');
 const router = express.Router();
 
 const db = new (require('../lib/db'))();
-const user = new (require('../lib/user'))(db);
+var user = new (require('../lib/user'))(db);
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {
-        active: '/',
-        breadcrumbs: [
-            {
-                'label': 'Главная',
-                'href': '/'
-            },
-        ],
-    });
+    if (user.info.id === undefined) {
+        res.redirect('/login');
+    } else {
+        res.render('index', {
+            active: '/',
+            user: user,
+            breadcrumbs: [
+                {
+                    'label': 'Главная',
+                    'href': '/'
+                },
+            ],
+        });
+    }
 });
 
 /* GET login page. */
@@ -36,7 +41,6 @@ router.post('/login', (req, res, next) => {
     user.login(req.body.login, req.body.password)
         .then((response) => {
             if (Object.keys(user.info).length) {
-                res.cookie.user = user.info;
                 res.redirect('/');
             } else {
                 user.info.error = {
@@ -48,6 +52,14 @@ router.post('/login', (req, res, next) => {
         .catch((error) => {
             res.send(error);
         })
+});
+
+/* Logout user */
+router.get('/logout', (req, res, next) => {
+    if (user !== undefined || user !== {}) {
+        user.info = {};
+        res.redirect('/login');
+    }
 });
 
 /* GET register page. */
@@ -67,7 +79,7 @@ router.get('/register', function (req, res, next) {
 router.post('/register', (req, res, next) => {
     user.register(req.body)
         .then((response) => {
-            res.send(response);
+            res.redirect('/');
         })
         .catch((error) => {
             res.send(error);
