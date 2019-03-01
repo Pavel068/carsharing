@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 27 2019 г., 14:38
+-- Время создания: Мар 01 2019 г., 16:46
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -46,7 +46,8 @@ CREATE TABLE `cars` (
 
 INSERT INTO `cars` (`id`, `model`, `mark`, `year`, `color`, `transmission`, `power`, `gos_number`, `price`) VALUES
 (1, 'Granta', 'Lada', 2016, 'Белый', 'Механика', 106, 'A277AA277', 7.2),
-(2, 'Vesta', 'Lada', 2017, 'Черный', 'Механика', 110, 'X123AA277', 7.65);
+(2, 'Vesta', 'Lada', 2017, 'Черный', 'Механика', 110, 'X123AA277', 7.65),
+(3, '', 'Opel', 0000, '', 'Механика', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -69,8 +70,8 @@ CREATE TABLE `crashes` (
 
 CREATE TABLE `places` (
   `car_id` int(11) NOT NULL,
-  `lat` float NOT NULL,
-  `lng` float NOT NULL
+  `lat` double NOT NULL,
+  `lng` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -78,8 +79,8 @@ CREATE TABLE `places` (
 --
 
 INSERT INTO `places` (`car_id`, `lat`, `lng`) VALUES
-(1, 58.7757, 58.7757),
-(2, 44.4444, 66.6667);
+(1, 52.7237519, 41.42867160000111),
+(2, 52.7237629, 41.42867160000008);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `crashes`

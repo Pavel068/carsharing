@@ -2,7 +2,7 @@ var Map = {
     myMap: {},
     map: {
         center: [55.76, 37.64],
-        zoom: 10,
+        zoom: 14,
         props: {
             searchControlProvider: 'yandex#search'
         }
@@ -28,6 +28,23 @@ var Map = {
                 }
             });
         });
+    },
+    addGeoObject: (item, options = {}) => {
+        if (item.model === undefined)
+            item.model = '';
+        if (item.mark === undefined)
+            item.mark = '';
+
+        Map.objects.push({
+            geometry: {
+                type: "Point",
+                coordinates: [item.lat, item.lng]
+            },
+            properties: {
+                iconContent: `${item.mark} ${item.model}`,
+            },
+            options: options
+        });
     }
 };
 
@@ -36,19 +53,28 @@ $(document).ready(function () {
 
     /* Add cars to map */
     if ($("#map").length > 0) {
+
+        // Get user location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                Map.map.center = [position.coords.latitude, position.coords.longitude];
+            });
+        }
+
+        // Add self
+        Map.addGeoObject({
+            lat: Map.map.center[0],
+            lng: Map.map.center[1]
+        }, {
+            fill: true,
+            fillColor: 'red'
+        });
+
+        // Add maps
         Map.getCarsList()
             .then(response => {
                 response.forEach(item => {
-                    let geoObject = {
-                        geometry: {
-                            type: "Point",
-                            coordinates: [item.lat, item.lng]
-                        },
-                        properties: {
-                            iconContent: `${item.mark} ${item.model}`,
-                        }
-                    };
-                    Map.objects.push(geoObject);
+                    Map.addGeoObject(item);
                 });
                 ymaps.ready(Map.init);
             })
@@ -57,7 +83,6 @@ $(document).ready(function () {
                 ymaps.ready(Map.init);
             });
     }
-
 
 
 });
