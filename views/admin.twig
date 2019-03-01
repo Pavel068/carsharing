@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="col-lg-12">
+        {% include 'inc/breadcrumbs.twig' %}
+        <p class="lead">Добавить автомобиль</p>
+        <form action="" method="post">
+            <label for="mark">Марка</label>
+            <input type="text" class="form-control" name="mark" id="mark">
+            <label for="model">Модель</label>
+            <input type="text" class="form-control" name="model" id="model">
+            <label for="year">Год выпуска</label>
+            <input type="text" class="form-control" name="year" id="year">
+            <label for="color">Цвет</label>
+            <input type="text" class="form-control" name="color" id="color">
+            <label for="transmission">КПП</label>
+            <input type="text" class="form-control" name="transmission" id="transmission">
+            <label for="power">Мощность (л.с.)</label>
+            <input type="text" class="form-control" name="power" id="power">
+            <label for="gos_number">Гос. номер</label>
+            <input type="text" class="form-control" name="gos_number" id="gos_number" placeholder="в формате A777AA77">
+            <label for="price">Цена аренды (минута)</label>
+            <input type="text" class="form-control" name="price" id="price">
+            <button class="form-control btn btn-success">Добавить</button>
+        </form>
+        <p class="lead">Все автомобили</p>
+        <div class="map" id="map">
+
+        </div>
+    </div>
+{% endblock %}
