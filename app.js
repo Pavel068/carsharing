@@ -1,15 +1,11 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-
-var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
-
-var redis = require("redis");
-var redisClient = redis.createClient();
 
 var indexRouter = require('./routes/index');
 var tripsRouter = require('./routes/trips');
@@ -37,17 +33,6 @@ app.use(sassMiddleware({
     sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(session({
-    store: new RedisStore({
-        host: 'localhost',
-        port: 6379,
-        client: redisClient
-    }),
-    secret: 'whatisthis',
-    resave: false,
-    saveUninitialized: false
-}));
 
 app.use('/', indexRouter);
 app.use('/trips', tripsRouter);

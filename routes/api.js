@@ -4,6 +4,9 @@ const router = express.Router();
 const db = new (require('../lib/db'))();
 const car = new (require('../lib/car'))(db);
 
+var redis = require("redis"),
+    redisClient = redis.createClient();
+
 router.get('/', function (req, res, next) {
     res.send('OK');
 });
