@@ -1,7 +1,7 @@
 var Map = {
     myMap: {},
     map: {
-        center: [55.76, 37.64],
+        center: [52.7, 41.5],
         zoom: 14,
         props: {
             searchControlProvider: 'yandex#search'
@@ -55,19 +55,18 @@ $(document).ready(function () {
     if ($("#map").length > 0) {
 
         // Get user location
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                Map.map.center = [position.coords.latitude, position.coords.longitude];
-            });
-        }
+        navigator.geolocation.getCurrentPosition(position => {
+            Map.map.center = [position.coords.latitude, position.coords.longitude];
 
-        // Add self
-        Map.addGeoObject({
-            lat: Map.map.center[0],
-            lng: Map.map.center[1]
-        }, {
-            fill: true,
-            fillColor: 'red'
+            // Add self
+            Map.addGeoObject({
+                lat: Map.map.center[0],
+                lng: Map.map.center[1]
+            }, {
+                iconImageHref: '/images/nav-me-icon.png',
+                iconImageSize: [32, 32],
+                iconImageOffset: [-11, -30]
+            });
         });
 
         // Add maps
