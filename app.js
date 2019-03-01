@@ -15,6 +15,7 @@ var indexRouter = require('./routes/index');
 var tripsRouter = require('./routes/trips');
 var carsRouter = require('./routes/cars');
 var adminRouter = require('./routes/admin');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/', indexRouter);
 app.use('/trips', tripsRouter);
 app.use('/cars', carsRouter);
 app.use('/admin', adminRouter);
+app.use('/api', apiRouter);
 
 app.use((req, res, next) => {
     res.locals({
