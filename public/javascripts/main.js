@@ -57,9 +57,11 @@ $(document).ready(function () {
                     .then(response => {
                         response.forEach(item => {
                             Map.addPlacemark([item.lat, item.lng], {
-                                hintContent: `${item.mark} ${item.model}`
+                                iconContent: `${item.mark} ${item.model}`,
+                                balloonContentHeader: 'Арендовать этот автомобиль',
+                                balloonContentBody: `${item.mark} ${item.model} - <b>${item.price} руб./мин.</b><br><button class="btn btn-success">Арендовать</button>`
                             }, {
-                                preset: "islands#circleDotIcon",
+                                preset: "islands#icon",
                                 iconColor: '#ff0000'
                             });
                         });
