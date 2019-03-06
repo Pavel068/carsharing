@@ -18,7 +18,7 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey={{ yandexApiKey }}&lang=ru_RU"
             type="text/javascript"></script>
     <script src="{{ base_path ~ directory }}/javascripts/main.js"></script>
-    <link rel="icon" href="{{ base_path ~ directory }}/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="{{ base_path ~ directory }}/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 {#HEADER#}
@@ -87,7 +87,7 @@
 </button>
 <!-- Modal chat -->
 <div class="modal fade" id="modalChat" tabindex="-1" role="dialog" aria-labelledby="modalChatLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalChatLabel">Чат с пользователями</h5>
@@ -98,15 +98,27 @@
             <div class="modal-body">
                 <div class="chat-body">
                     <div class="chat-item">
-                        <img src="" alt="">
-                        <div class="text"></div>
+                        <div class="chat-item-info">
+                            <img class="img-small" src="{{ base_path ~ directory }}/images/nav-me-icon.png" alt="">
+                            <div>
+                                <p class="lead">Username</p>
+                                <p>06.03.2019 14:23:47</p>
+                            </div>
+                        </div>
+                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi cumque
+                            eligendi perferendis voluptatibus! Amet consequatur ipsum natus! Dolorem enim odio
+                            perferendis, repellat tempore voluptatem! Animi, architecto aut culpa debitis distinctio
+                            doloribus ducimus enim eos esse excepturi libero obcaecati officia omnis pariatur porro sed
+                            sit suscipit temporibus tenetur vel? Ea.
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <label for="chat-box">Сообщение</label>
-                <textarea name="chat-box" id="chat-box" class="form-control"></textarea>
-                <button type="button" class="btn btn-success">Отправить</button>
+                <div class="chat-send">
+                    <input type="text" name="chat-box" class="form-control" placeholder="Введите Ваше сообщение ...">
+                    <button type="button" class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
             </div>
         </div>
     </div>

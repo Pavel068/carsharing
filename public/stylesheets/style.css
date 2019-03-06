@@ -1,44 +1,89 @@
-* {
-  margin: 0;
-  padding: 0; }
-
 html {
-  height: 100%; }
-  html body {
-    font: 16px Georgia, Helvetica, Arial, serif;
-    height: 100%; }
-    html body header {
-      min-height: 80px;
-      background-color: #00222c; }
-      html body header p {
-        color: #57af50; }
-      html body header a.logo {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center; }
-        html body header a.logo img.logo {
-          width: 50px;
-          height: 50px; }
-      html body header a.logo:hover {
-        text-decoration: none; }
-    html body .content {
-      margin-bottom: 30px; }
-      html body .content .img-medium {
-        width: 150px; }
-      html body .content #map {
-        width: 100%;
-        height: calc(90vh - 80px); }
-      html body .content form button {
-        margin-top: 5px;
-        margin-bottom: 5px; }
-      html body .content form .btn-control {
-        width: 100px;
-        height: 100px;
-        border-radius: 100px; }
-    html body button.btn-chat {
-      position: fixed;
-      bottom: 5px;
-      right: 5px; }
+  height: 100%;
+}
+html body {
+  font: 16px Georgia, Helvetica, Arial, serif;
+  height: 100%;
+}
+html body header {
+  min-height: 80px;
+  background-color: #00222c;
+}
+html body header p {
+  color: #57af50;
+}
+html body header a.logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+html body header a.logo img.logo {
+  width: 50px;
+  height: 50px;
+}
+html body header a.logo:hover {
+  text-decoration: none;
+}
+html body .content {
+  margin-bottom: 30px;
+}
+html body .content #map {
+  width: 100%;
+  height: calc(90vh - 80px);
+}
+html body .content form button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+html body .content form .btn-control {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+html body button.btn-chat {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+html body .chat-body {
+  max-height: 250px;
+  overflow: auto;
+}
+html body .chat-body .chat-item {
+  background-color: #f5f5f5;
+  margin: 5px;
+  padding: 5px;
+}
+html body .chat-body .chat-item-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+html body .chat-body .chat-item-info div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-basis: 1;
+}
+html body .modal-footer {
+  flex-direction: column;
+  align-items: flex-start;
+}
+html body .modal-footer .chat-send {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+html .img-big {
+  width: 300px;
+}
+html .img-medium {
+  width: 150px;
+}
+html .img-small {
+  width: 75px;
+  height: 75px;
+}
 
 /*# sourceMappingURL=style.css.map */
