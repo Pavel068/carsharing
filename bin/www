@@ -90,9 +90,14 @@ function onListening() {
     debug('Listening on ' + bind);
 }
 
-socketServer.on('connection', function (socket) {
+socketServer.on('connection', socket => {
     console.log('a user connected');
-    socket.on('disconnect', function () {
+
+    socket.on('chat', msg => {
+        socketServer.emit('chat', msg);
+    });
+
+    socket.on('disconnect', () => {
         console.log('user disconnected');
     });
 });

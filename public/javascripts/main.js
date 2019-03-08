@@ -35,7 +35,19 @@ var Map = {
 };
 
 $(document).ready(function () {
-    // var socket = io();
+    // socket functions
+    var socket = io();
+
+    socket.on('chat', msg => {
+        $('div.text').text(msg);
+    });
+
+    // send chat msg
+    $('#send-message').click(() => {
+        let msgInput = $('input[name="chat-box"]');
+        socket.emit('chat', msgInput.val());
+        msgInput.val('');
+    });
 
     /* Add cars to map */
     if ($("#map").length > 0) {
