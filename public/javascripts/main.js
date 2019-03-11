@@ -35,6 +35,14 @@ var Map = {
 };
 
 $(document).ready(function () {
+    // init vue chat
+    var chat = new Vue({
+        el: '#modalChat',
+        data: {
+
+        }
+    });
+
     // socket functions
     var socket = io();
 
