@@ -96,7 +96,7 @@ $(document).ready(function () {
                             Map.addPlacemark([item.lat, item.lng], {
                                 iconContent: `${item.mark} ${item.model}`,
                                 balloonContentHeader: 'Арендовать этот автомобиль',
-                                balloonContentBody: `${item.mark} ${item.model} - <b>${item.price} руб./мин.</b><br><button class="btn btn-success">Арендовать</button>`
+                                balloonContentBody: `${item.mark} ${item.model} - <b>${item.price} руб./мин.</b><br>Гос. номер: ${item.gos_number}<br><button class="btn btn-success">Арендовать</button>`
                             }, {
                                 preset: "islands#icon",
                                 iconColor: '#ff0000'
