@@ -112,8 +112,8 @@
             </div>
             <div class="modal-footer">
                 <div class="chat-send">
-                    <input type="text" name="chat-box" class="form-control" placeholder="Введите Ваше сообщение ...">
-                    <button type="button" class="btn btn-success" id="send-message"><i class="fa fa-paper-plane"
+                    <input type="text" name="chat-box" class="form-control" placeholder="Введите Ваше сообщение ..." v-model="message">
+                    <button type="button" class="btn btn-success" id="send-message" @click="sendMessage"><i class="fa fa-paper-plane"
                                                                                        aria-hidden="true"></i></button>
                 </div>
             </div>

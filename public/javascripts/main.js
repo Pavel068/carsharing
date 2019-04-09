@@ -35,35 +35,43 @@ var Map = {
 };
 
 $(document).ready(function () {
+    const socket = io();
+
     // init vue chat
     var chat = new Vue({
         delimiters: ['${', '}'],
         el: '#modalChat',
         data: {
-            chat: []
+            chat: [],
+            message: ''
         },
         methods: {
             getMessages: function () {
-
+                $.get('/api/chat/0', response => {
+                    if (response !== undefined) {
+                        chat.$data.chat = response;
+                    }
+                });
             },
             sendMessage: function () {
-
+                $.post('/api/chat/', {
+                    msg: this.message
+                }, response => {
+                    if (response.status !== undefined && response.status) {
+                        socket.emit('chat', this.message);
+                        this.message.msg = '';
+                    }
+                });
             }
+        },
+        beforeMount() {
+            this.getMessages();
         }
     });
 
-    // socket functions
-    var socket = io();
-
+    // socket events
     socket.on('chat', msg => {
-        $('div.text').text(msg);
-    });
-
-    // send chat msg
-    $('#send-message').click(() => {
-        let msgInput = $('input[name="chat-box"]');
-        socket.emit('chat', msgInput.val());
-        msgInput.val('');
+        chat.methods.getMessages();
     });
 
     /* Add cars to map */
