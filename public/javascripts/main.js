@@ -37,9 +37,18 @@ var Map = {
 $(document).ready(function () {
     // init vue chat
     var chat = new Vue({
+        delimiters: ['${', '}'],
         el: '#modalChat',
         data: {
+            chat: []
+        },
+        methods: {
+            getMessages: function () {
 
+            },
+            sendMessage: function () {
+
+            }
         }
     });
 

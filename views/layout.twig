@@ -98,27 +98,23 @@
             </div>
             <div class="modal-body">
                 <div class="chat-body">
-                    <div class="chat-item">
+                    <div class="chat-item" v-for="chatItem in chat">
                         <div class="chat-item-info">
                             <img class="img-small" src="{{ base_path ~ directory }}/images/nav-me-icon.png" alt="">
                             <div>
-                                <p class="lead">Username</p>
-                                <p>06.03.2019 14:23:47</p>
+                                <p class="lead">${ chatItem.name } ${ chatItem.surname }</p>
+                                <p>${ chatItem.ts }</p>
                             </div>
                         </div>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi cumque
-                            eligendi perferendis voluptatibus! Amet consequatur ipsum natus! Dolorem enim odio
-                            perferendis, repellat tempore voluptatem! Animi, architecto aut culpa debitis distinctio
-                            doloribus ducimus enim eos esse excepturi libero obcaecati officia omnis pariatur porro sed
-                            sit suscipit temporibus tenetur vel? Ea.
-                        </div>
+                        <div class="text">${ chatItem.msg }</div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="chat-send">
                     <input type="text" name="chat-box" class="form-control" placeholder="Введите Ваше сообщение ...">
-                    <button type="button" class="btn btn-success" id="send-message"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-success" id="send-message"><i class="fa fa-paper-plane"
+                                                                                       aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
