@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Мар 01 2019 г., 16:46
--- Версия сервера: 5.6.41
--- Версия PHP: 7.2.10
+-- Хост: localhost:3306
+-- Время создания: Апр 09 2019 г., 22:47
+-- Версия сервера: 5.7.25-0ubuntu0.18.04.2
+-- Версия PHP: 7.2.16-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- База данных: `carsharing`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `abuses`
+--
+
+CREATE TABLE `abuses` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -52,13 +65,37 @@ INSERT INTO `cars` (`id`, `model`, `mark`, `year`, `color`, `transmission`, `pow
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `chat_id` varchar(32) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `chat`
+--
+
+INSERT INTO `chat` (`id`, `chat_id`, `user_id`, `ts`, `msg`) VALUES
+(1, '0', 1, '2019-04-09 17:38:01', 'qwe'),
+(2, '0', 1, '2019-04-09 17:38:42', ''),
+(3, '0', 1, '2019-04-09 17:38:46', 'sdsdf'),
+(4, '0', 1, '2019-04-09 17:47:35', 'sdv');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `crashes`
 --
 
 CREATE TABLE `crashes` (
   `id` int(11) NOT NULL,
   `trip_id` int(11) NOT NULL,
-  `crash_time` timestamp NOT NULL,
+  `crash_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `reason` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -92,8 +129,8 @@ CREATE TABLE `trips` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `car` int(11) NOT NULL,
-  `start_time` timestamp NOT NULL,
-  `end_time` timestamp NOT NULL,
+  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `route` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -128,10 +165,24 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `patr`, `birt
 --
 
 --
+-- Индексы таблицы `abuses`
+--
+ALTER TABLE `abuses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Индексы таблицы `cars`
 --
 ALTER TABLE `cars`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `crashes`
@@ -165,10 +216,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `abuses`
+--
+ALTER TABLE `abuses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `cars`
 --
 ALTER TABLE `cars`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `crashes`
@@ -191,6 +254,18 @@ ALTER TABLE `users`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `abuses`
+--
+ALTER TABLE `abuses`
+  ADD CONSTRAINT `abuses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `crashes`
