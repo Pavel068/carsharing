@@ -9,12 +9,36 @@
                 <form action="">
                     <label for="name">Имя</label>
                     <input type="text" class="form-control" name="name" id="name">
+                    <label for="surname">Фамилия</label>
+                    <input type="text" class="form-control" name="surname" id="surname">
+                    <label for="patr">Отчество</label>
+                    <input type="text" class="form-control" name="patr" id="patr">
+                    <label for="birthday">Дата рождения</label>
+                    <input type="text" class="form-control" name="birthday" id="birthday">
+                    <label for="avatar">Аватар</label>
+                    <input type="file" class="form-control" name="avatar" id="avatar">
+                    <button class="btn btn-primary">Сохранить</button>
+                </form>
+                <p class="lead">Смена пароля</p>
+                <form action="">
+                    <label for="pass_old">Старый пароль</label>
+                    <input type="password" class="form-control" name="pass_old" id="pass_old">
+                    <label for="new_pass">Новый пароль</label>
+                    <input type="password" class="form-control" name="new_pass" id="new_pass">
+                    <label for="new_pass_repeat">Подтверждение</label>
+                    <input type="password" class="form-control" name="new_pass_repeat" id="new_pass_repeat">
                     <button class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
             <div class="col-lg-6">
                 <p class="lead">Паспортные и платежные данные</p>
                 <form action="">
+                    <label for="passport">Скан-копия паспорта РФ</label>
+                    <input type="file" class="form-control" name="passport" id="passport">
+                    <label for="driver">Скан-копия водительского удостоверения</label>
+                    <input type="file" class="form-control" name="driver" id="driver">
+                    <label for="card_number">Номер банковской карты</label>
+                    <input type="text" class="form-control" name="card_number" id="card_number">
                     <button class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
