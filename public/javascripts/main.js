@@ -49,7 +49,7 @@ $(document).ready(function () {
             getMessages: function () {
                 $.get('/api/chat/0', response => {
                     if (response !== undefined) {
-                        chat.$data.chat = response;
+                        this.chat = response;
                     }
                 });
             },
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
     // socket events
     socket.on('chat', msg => {
-        chat.methods.getMessages();
+        chat.getMessages();
     });
 
     /* Add cars to map */

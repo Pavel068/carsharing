@@ -42,7 +42,8 @@ app.use('/api', apiRouter);
 
 app.use((req, res, next) => {
     res.locals({
-        yandexApiKey: process.env.YANDEX_API_KEY
+        yandexApiKey: process.env.YANDEX_API_KEY,
+        session: req.session
     });
     next();
 });
