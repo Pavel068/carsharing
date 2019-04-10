@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Апр 10 2019 г., 13:17
--- Версия сервера: 5.6.41
--- Версия PHP: 7.2.10
+-- Хост: localhost:3306
+-- Время создания: Апр 10 2019 г., 20:24
+-- Версия сервера: 5.7.25-0ubuntu0.18.04.2
+-- Версия PHP: 7.2.16-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,6 +33,19 @@ CREATE TABLE `abuses` (
   `user_id` int(11) NOT NULL,
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `abuses_media`
+--
+
+CREATE TABLE `abuses_media` (
+  `id` int(11) NOT NULL,
+  `abuse_id` int(11) NOT NULL,
+  `filename` varchar(32) NOT NULL,
+  `description` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -95,7 +108,8 @@ INSERT INTO `chat` (`id`, `chat_id`, `user_id`, `ts`, `msg`) VALUES
 (12, '0', 1, '2019-04-10 07:34:12', '1'),
 (13, '0', 1, '2019-04-10 07:36:08', '2'),
 (14, '0', NULL, '2019-04-10 07:41:09', 'Test'),
-(15, '0', 2, '2019-04-10 07:42:21', 'Hello');
+(15, '0', 2, '2019-04-10 07:42:21', 'Hello'),
+(16, '0', 3, '2019-04-10 13:36:42', 'Привет. Кто поедет к Ашану в ближайший час?');
 
 -- --------------------------------------------------------
 
@@ -113,12 +127,25 @@ CREATE TABLE `crashes` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `docs`
+--
+
+CREATE TABLE `docs` (
+  `user_id` int(11) NOT NULL,
+  `passport` varchar(32) DEFAULT NULL,
+  `driver` varchar(32) DEFAULT NULL,
+  `card_number` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `payments`
 --
 
 CREATE TABLE `payments` (
   `id` int(11) NOT NULL,
-  `ts` timestamp NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `amount` double NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -182,8 +209,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `patr`, `birthday`, `avatar`, `is_admin`, `balance`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Admin', 'Ad', NULL, NULL, NULL, 1, '0.0000000000'),
-(2, 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Test', 'T', NULL, NULL, NULL, 0, '0.0000000000');
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Админ', 'Да', 'Админ', '1998-01-01', '', 1, '0.0000000000'),
+(2, 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Юзер1', 'Юзеров1', 'Юзерович1', '1998-01-01', '', 0, '0.0000000000'),
+(3, 'user', '04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'Юзер1', 'Юзеров1', 'Юзерович1', '1998-01-01', '', 0, '0.0000000000');
 
 --
 -- Индексы сохранённых таблиц
@@ -195,6 +223,13 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `patr`, `birt
 ALTER TABLE `abuses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Индексы таблицы `abuses_media`
+--
+ALTER TABLE `abuses_media`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `abuse_id` (`abuse_id`);
 
 --
 -- Индексы таблицы `cars`
@@ -215,6 +250,12 @@ ALTER TABLE `chat`
 ALTER TABLE `crashes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `trip_id` (`trip_id`);
+
+--
+-- Индексы таблицы `docs`
+--
+ALTER TABLE `docs`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Индексы таблицы `payments`
@@ -254,6 +295,12 @@ ALTER TABLE `abuses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `abuses_media`
+--
+ALTER TABLE `abuses_media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `cars`
 --
 ALTER TABLE `cars`
@@ -263,7 +310,7 @@ ALTER TABLE `cars`
 -- AUTO_INCREMENT для таблицы `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `crashes`
@@ -287,7 +334,7 @@ ALTER TABLE `trips`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -300,6 +347,12 @@ ALTER TABLE `abuses`
   ADD CONSTRAINT `abuses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ограничения внешнего ключа таблицы `abuses_media`
+--
+ALTER TABLE `abuses_media`
+  ADD CONSTRAINT `abuses_media_ibfk_1` FOREIGN KEY (`abuse_id`) REFERENCES `abuses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ограничения внешнего ключа таблицы `chat`
 --
 ALTER TABLE `chat`
@@ -310,6 +363,12 @@ ALTER TABLE `chat`
 --
 ALTER TABLE `crashes`
   ADD CONSTRAINT `crashes_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trips` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `docs`
+--
+ALTER TABLE `docs`
+  ADD CONSTRAINT `docs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `payments`
