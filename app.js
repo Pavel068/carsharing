@@ -10,6 +10,7 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var tripsRouter = require('./routes/trips');
 var carsRouter = require('./routes/cars');
+var accountRouter = require('./routes/account');
 var adminRouter = require('./routes/admin');
 var apiRouter = require('./routes/api');
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/trips', tripsRouter);
 app.use('/cars', carsRouter);
+app.use('/account', accountRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
 
