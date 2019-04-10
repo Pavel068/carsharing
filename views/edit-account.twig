@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <p class="lead">Основные данные</p>
-                <form action="">
+                <form action="/account/edit/info" method="post">
                     <label for="name">Имя</label>
                     <input type="text" class="form-control" name="name" id="name" value="{{ user.info.name }}">
                     <label for="surname">Фамилия</label>
@@ -20,7 +20,7 @@
                     <button class="btn btn-primary">Сохранить</button>
                 </form>
                 <p class="lead">Смена пароля</p>
-                <form action="">
+                <form action="/account/edit/password" method="post">
                     <label for="pass_old">Старый пароль</label>
                     <input type="password" class="form-control" name="pass_old" id="pass_old">
                     <label for="new_pass">Новый пароль</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-lg-6">
                 <p class="lead">Паспортные и платежные данные</p>
-                <form action="">
+                <form action="/account/edit/account" method="post">
                     <label for="passport">Скан-копия паспорта РФ</label>
                     <input type="file" class="form-control" name="passport" id="passport">
                     <label for="driver">Скан-копия водительского удостоверения</label>

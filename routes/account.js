@@ -31,4 +31,23 @@ router.get('/edit', function (req, res, next) {
     });
 });
 
+router.post('/edit/info', function (req, res, next) {
+    user.saveUserInfo(req.body)
+        .then(response => {
+            console.log(response);
+            res.redirect('/account');
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
+
+router.post('/edit/password', function (req, res, next) {
+
+});
+
+router.post('/edit/account', function (req, res, next) {
+
+});
+
 module.exports = router;
