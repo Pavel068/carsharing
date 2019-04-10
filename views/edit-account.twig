@@ -8,13 +8,13 @@
                 <p class="lead">Основные данные</p>
                 <form action="">
                     <label for="name">Имя</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <input type="text" class="form-control" name="name" id="name" value="{{ user.info.name }}">
                     <label for="surname">Фамилия</label>
-                    <input type="text" class="form-control" name="surname" id="surname">
+                    <input type="text" class="form-control" name="surname" id="surname" value="{{ user.info.surname }}">
                     <label for="patr">Отчество</label>
-                    <input type="text" class="form-control" name="patr" id="patr">
+                    <input type="text" class="form-control" name="patr" id="patr" value="{{ user.info.patr }}">
                     <label for="birthday">Дата рождения</label>
-                    <input type="text" class="form-control" name="birthday" id="birthday">
+                    <input type="text" class="form-control" name="birthday" id="birthday" value="{{ user.info.birthday }}">
                     <label for="avatar">Аватар</label>
                     <input type="file" class="form-control" name="avatar" id="avatar">
                     <button class="btn btn-primary">Сохранить</button>

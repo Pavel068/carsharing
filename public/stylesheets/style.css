@@ -23,13 +23,15 @@ html {
       html body .content #map {
         width: 100%;
         height: calc(90vh - 80px); }
-      html body .content form button {
-        margin-top: 5px;
-        margin-bottom: 5px; }
-      html body .content form .btn-control {
-        width: 100px;
-        height: 100px;
-        border-radius: 100px; }
+      html body .content form {
+        margin-bottom: 10px; }
+        html body .content form button {
+          margin-top: 5px;
+          margin-bottom: 5px; }
+        html body .content form .btn-control {
+          width: 100px;
+          height: 100px;
+          border-radius: 100px; }
     html body button.btn-chat {
       position: fixed;
       bottom: 5px;
