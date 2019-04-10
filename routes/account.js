@@ -32,6 +32,11 @@ router.get('/edit', function (req, res, next) {
 });
 
 router.post('/edit/info', function (req, res, next) {
+    if (req.files !== undefined) {
+        // req.body.avatar = 'a_' +
+        // req.files.avatar.mv('/public/images/a_' + req.files.avatar.md5 + '.' + req.files.avatar)
+        console.log(req.files);
+    }
     user.saveUserInfo(req.body)
         .then(response => {
             console.log(response);
