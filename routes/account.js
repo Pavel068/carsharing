@@ -14,4 +14,21 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/edit', function (req, res, next) {
+    res.render('edit-account', {
+        user: user,
+        active: '/account',
+        breadcrumbs: [
+            {
+                'label': 'Аккаунт',
+                'href': '/account'
+            },
+            {
+                'label': 'Редактировать данные',
+                'href': '/account/edit'
+            },
+        ],
+    });
+});
+
 module.exports = router;
